@@ -30,7 +30,7 @@ public class TodoController {
 
     @PostMapping("/task")
     public TodoTask createTask(@RequestBody TodoTask task) {
-        System.out.println("Created/Updated a task successfully");
+        System.out.println("Created/Updated a task successfully..");
         return todoService.createOrUpdate(task);
     }
 }
