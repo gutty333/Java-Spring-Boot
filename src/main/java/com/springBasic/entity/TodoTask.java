@@ -1,9 +1,7 @@
 package com.springBasic.entity;
 
-import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
+import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
 
 import java.util.Date;
@@ -11,8 +9,7 @@ import java.util.Date;
 
 @Builder
 @Jacksonized
-@Getter
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+@Value
 public class TodoTask {
      static int idCounter = 0;
 

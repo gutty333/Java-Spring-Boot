@@ -3,6 +3,9 @@ package com.springBasic.controller;
 import com.springBasic.entity.TodoTask;
 import com.springBasic.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +13,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class TodoController {
     @Autowired
-    private TodoService todoService;
+    TodoService todoService;
 
     @Operation(summary = "Get a target task")
     @GetMapping("/task/{id}")
