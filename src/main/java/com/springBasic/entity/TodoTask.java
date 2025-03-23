@@ -27,6 +27,5 @@ public class TodoTask {
      TodoTaskStatus status = TodoTaskStatus.NOT_STARTED;
      Date dueDate;
 
-     @NotNull(message = "Created date cannot be null")
      Date createdAt = Date.from(java.time.Instant.now());
 }

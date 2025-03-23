@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -41,6 +42,7 @@ public class TodoController {
     @PostMapping("/task")
     public TodoTask createTask(@RequestBody TodoTask task) {
         System.out.println("Created/Updated a task successfully..");
+        task.setCreatedAt(Date.from(java.time.Instant.now()));
         return todoService.createOrUpdate(task);
     }
 }
