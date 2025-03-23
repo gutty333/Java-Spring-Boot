@@ -2,6 +2,7 @@ package com.springBasic.service;
 
 import com.springBasic.entity.TodoTask;
 import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
@@ -10,22 +11,23 @@ import java.util.List;
 
 @Service
 @FieldDefaults(makeFinal = true, level= AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class TodoService {
-    static HashMap<Integer, TodoTask> todoTaskStore = new HashMap<>();
+    TodoTaskRepository todoTaskRepository;
 
     public TodoTask createOrUpdate(TodoTask todoTask) {
-        return todoTaskStore.put(todoTask.getId(), todoTask);
+        return todoTaskRepository.save(todoTask);
     }
 
     public TodoTask getTask(int id) {
-        return todoTaskStore.get(id);
+        return todoTaskRepository.findById(id);
     }
 
     public void delete(int id) {
-        todoTaskStore.remove(id);
+        todoTaskRepository.deleteById(id);
     }
 
     public List<TodoTask> getAllTasks() {
-        return todoTaskStore.values().stream().toList();
+        return todoTaskRepository.findAll();
     }
 }
