@@ -11,9 +11,6 @@ import lombok.extern.jackson.Jacksonized;
 
 import java.util.Date;
 
-
-@Builder
-@Jacksonized
 @Data
 @Entity
 public class TodoTask {
